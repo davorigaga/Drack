@@ -1,0 +1,59 @@
+﻿<script src="~/scripts/jquery-3.0.0.min.js"></script>
+@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>
+@using Drack.Extensions;
+
+@{
+    ViewBag.Title = "App Users";
+    var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 10, ajaxUpdateContainerId: "grid");
+    grid.Pager(WebGridPagerModes.All);
+}
+
+<div class="text-center">
+    <h2> <a href="@Url.Action("Index", "AppUsers")">@ViewBag.Title</a></h2>
+
+    <p>
+        <span class="badge badge-danger">@Model.Count()</span>
+    </p>
+</div>
+
+<div class="card">
+    @using (Html.BeginForm("Search", "AppUsers", FormMethod.Get, new { @class = "navbar-right navbar-form" }))
+    {
+        <div class="card-body">
+            <div class="col-sm-10 col-md-6 input-group input-group-sm text-right">
+                <input type="search" name="s" placeholder="@ViewBag.SearchParam" class="form-control" required />
+                <div class="input-group-btn">
+                    <button class="btn btn-default btn-sm" type="submit">search <i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<br />
+<div class="container table-responsive">
+    @grid.GetHtml(
+       htmlAttributes: new { id = "grid" },
+        tableStyle: "table table-hover",
+        headerStyle: "",
+        footerStyle: "",
+        alternatingRowStyle: "",
+        rowStyle: "",
+        mode: WebGridPagerModes.All,
+        firstText: "<< First",
+        previousText: "< Previous",
+        nextText: "Next >",
+        lastText: "Last >>",
+        columns: grid.Columns(
+            grid.Column(header: "", format:
+            (item) =>
+            {
+                var links =
+                            "<a class=' text-danger' href='./AppUsers/Delete/" + @item.Id + "' onclick = 'return confirmAction();'>Delete <i class='fas fa-trash' title='Delete'></i></a>";
+                return Html.Raw(links);
+            }),
+            
+            grid.Column(columnName: "UserName", header: "Username"),
+            grid.Column(columnName: "FullName", header: "Fullname")
+    )
+    )
+</div>

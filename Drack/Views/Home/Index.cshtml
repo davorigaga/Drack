@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Drack";
+    ViewBag.Subtitle = "Road transportation driver management system.";
+}
+
+<div class="position-relative overflow-hidden text-center bg-home">
+    <div class="bg-home-overlay p-5">
+        <div class="col-md-12">
+            <h1 class="display-4 mt-4 font-weight-normal text-primary">@ViewBag.Title</h1>
+            <p class="lead text-light p-2">@ViewBag.Subtitle</p>
+            <a class="btn btn-outline-primary" href="@Url.Action("Search", "Drivers")">Search drivers</a>
+            <a class="btn btn-outline-secondary"  href="@Url.Action("About", "Home")">Learn more</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿@model Drack.Models.DriverLicense
+
+@{
+    ViewBag.Title = "Driver License";
+    ViewBag.Subtitle = "Authorization to drive";
+}
+
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4 mt-4 font-weight-normal text-primary">@ViewBag.Title</h1>
+        <p class="lead text-secondary p-2">@ViewBag.Subtitle</p>
+    </div>
+
+    @using (Html.BeginForm("UpdateLicense", "Drivers", FormMethod.Post, new { enctype = "multipart/form-data", @class = "updateform" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.DriverId)
+            @Html.HiddenFor(model => model.CreatedBy)
+            @Html.HiddenFor(model => model.CreatedDate)
+            @Html.HiddenFor(model => model.ModifiedBy)
+            @Html.HiddenFor(model => model.ModifiedDate)
+            @Html.HiddenFor(model => model.DriverLicenseImagePath)
+            
+            <div class="col-md-6">
+                <div class="form-row">
+                    @Html.LabelFor(model => model.DriverLicenseImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="LicenseImageFile" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.DriverLicenseImagePath, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row text-center">
+                <div class="col-md-12">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@ViewBag.Title - Drack</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="shortcut icon" href="~/Resources/images/atibal.png" />
+    <link rel="stylesheet" href="~/Content/fontawesome/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="~/Content/sidebar.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <main role="main">
+
+        <div id="wrapper" class="toggled">
+            <!-- Sidebar -->
+            @Html.Partial("_sidebarNavPartial")
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <a href="#sidebarCollapse" class="btn btn-default" id="sidebarCollapse"><i class="fas fa-ellipsis-h"></i></a>
+                    @RenderBody()
+
+                    <footer class="text-muted">
+                        <div class="container text-center">
+                            <p>&copy; @DateTime.Now.Year - Drack</p>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+    </main>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/Scripts/jquery-slim.min.js"><\/script>')</script>
+    @RenderSection("scripts", required: false)
+    
+</body>
+
+</html>

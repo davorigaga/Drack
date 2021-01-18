@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="@ViewBag.Keywords">
+    @{
+        ViewBag.Description = ViewBag.Subtitle;
+        ViewBag.Image = "/Resources/images/drack.png";
+    }
+    <meta name="description" content="@ViewBag.Description">
+    <meta property="og:image" content="@ViewBag.Image">
+    <title>Drack - @ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="shortcut icon" href="~/Resources/images/drack.png" />
+    <link rel="stylesheet" href="~/Content/fontawesome/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="~/Content/datatables/datatables.min.css" />
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark site-header sticky-top py-1">
+        <div class="container sticky-top">
+            <a class="navbar-brand py-2" href="@Url.Action("Index", "Home", new { area = "" })"><img class="img-brand" src="~/Resources/images/drack.png" alt="Drack"/></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation" title="Menu">
+                <i class="fas fa-ellipsis-v icon-font text-secondary"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample09">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Search", "Search", "Drivers", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("News", "", "News", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Policy", "Policy", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li>
+                        <a class="nav-link" href="@Url.Action("Index", "Dashboard", new { area = "Union" })">Union</a>
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+
+        </div>
+    </nav>    
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="footer m-0 p-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 text-white text-center">
+                    Drack
+                    <small class="mb-3 text-white">&copy; @DateTime.Now.Year </small>.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        //
+    </script>
+</body>
+</html>

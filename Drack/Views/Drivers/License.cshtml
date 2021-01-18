@@ -1,0 +1,48 @@
+﻿@model Drack.Models.DriverLicense
+
+@{
+    ViewBag.Title = "Driver License";
+    ViewBag.Subtitle = "Authorization to drive";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4 mt-4 font-weight-normal text-primary">@ViewBag.Title</h1>
+        <p class="lead text-secondary p-2">@ViewBag.Subtitle</p>
+    </div>
+    <div class="container">
+        @if (Model != null)
+        {
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    @if (Model.DriverLicenseImagePath != null)
+                    {
+                        <img class="img-license" src="~/Resources/images/drivers/@Model.DriverLicenseImagePath" />
+                    }
+                    else
+                    {
+                        <img class="img-license" src="~/Resources/images/drivers/license.png" />
+                    }
+                </div>
+                <div class="col-md-12 text-center">
+                    <p class="p-4">
+                        @*<a class="btn btn-primary btn-lg" href="@Url.Action("UpdateLicense")">Update License</a>*@
+                        <a class="btn btn-danger btn-lg" href="@Url.Action("DeleteLicense")">Delete</a>
+                        <a class="btn btn-info btn-lg" href="@Url.Action("About")">Driver Profile</a>
+                    </p>
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="p-4">
+                        <a class="btn btn-primary btn-lg" href="@Url.Action("AddLicense")">Add License</a>
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

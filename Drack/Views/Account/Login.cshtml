@@ -1,0 +1,50 @@
+﻿@using Drack.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    ViewBag.Subtitle = "Please sign in to your account.";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <section id="account-form">
+            <div class="row text-center">
+                <div class="col-sm-12">
+                    <h3 class="font-weight-light text-secondary m-2">@ViewBag.Title</h3>
+                    <p>
+                        <i class="fas fa-sign-in-alt icon-lg text-primary"></i>
+                    </p>
+                </div>
+            </div>
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-account", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <p class="font-weight-light text-center text-primary">@ViewBag.Subtitle</p>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(m => m.Email, new { @class = "sr-only", @for = "Email" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email address", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(m => m.Password, new { @class = "sr-only", @for = "password" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+                <div class="checkbox mb-3">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                </div>
+                <input type="submit" value="Log in" class="btn btn-lg btn-primary btn-block" />
+                <p>
+                    @Html.ActionLink("Register as a new user", "Register") | 
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

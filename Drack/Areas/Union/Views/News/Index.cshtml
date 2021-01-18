@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Drack.Models.News>
+@using Drack.Extensions;
+
+@{
+    ViewBag.Title = "News";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Headline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Headline)
+        </td>
+        <td>
+            @Html.Truncate(item.NewsDescription, 100)
+        </td>
+        <td>
+            @if (item.NewsImagePath != null)
+            {
+                <img class="img-min" src="~/Resources/images/news/@item.NewsImagePath" />
+            }
+            else
+            {
+                <img class="img-min" src="~/Resources/images/news/news.jpg" />
+            }
+        </td>
+        <td>
+            @Html.ActionLink("View", "Details", new { id = item.NewsId }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.NewsId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NewsId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNet.Identity
+@using Drack.Extensions
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "form-horizontal mt-2 mt-md-0" }))
+    {
+        @Html.AntiForgeryToken()
+
+            <li>
+                @Html.ActionLink(User.Identity.GetFullName(), "Index", "Manage", new { area = "" }, htmlAttributes: new { title = "Manage", @class = "text-white" })
+            </li>
+            <li>
+                @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", new { area = "" }, htmlAttributes: new { title = "Manage", @class = "text-white" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()" class="text-danger">Log off</a></li>
+    }
+}
+else
+{
+    <ul class="navbar-nav">
+        <li class="nav-item">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+        <li class="nav-item">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    </ul>
+}

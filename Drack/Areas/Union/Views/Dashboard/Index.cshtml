@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+
+<div class="jumbotron text-center">
+    <p class="text-center"><img class="img-jumbotron" src="~/Resources/images/drack.png"/></p>
+    <h1 class="lead">Administrator account</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row text-center">
+        <div class="col-sm-12 col-md-6 p-2">
+            <div class="card p-2 bg-danger">
+                <h4 class="text-light"><strong class="text-dark">@ViewBag.Veryfied</strong> Verified</h4>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 p-2">
+            <div class="card p-2 bg-primary">
+                <h4 class="text-light"><strong class="text-dark">@ViewBag.Active</strong> Active</h4>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 p-2">
+            <div class="card p-2 bg-success">
+                <h4 class="text-light"><strong class="text-dark">@ViewBag.Inactive</strong> Inactive</h4>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 p-2">
+            <div class="card p-2 bg-warning">
+                <h4 class="text-light"><strong class="text-dark">@ViewBag.Suspended</strong> Suspended</h4>
+            </div>
+        </div>
+    </div>
+
+</div>
+

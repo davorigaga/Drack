@@ -1,0 +1,35 @@
+﻿
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="@Url.Action("Index", "Dashboard", new { area = "Union" })">Menu</a>
+        </li>
+        <li>
+            @Html.ActionLink("Dashboard", "Index", "Dashboard", new { area = "Union" }, new { @class = "" })
+        </li>
+        <li>
+            @Html.ActionLink("Garage", "Index", "Garages", new { area = "Union" }, new { @class = "" })
+        </li>
+        <li>
+            @Html.ActionLink("Garage Chairmen", "Index", "GarageChairmen", new { area = "Union" }, new { @class = "" })
+        </li>
+        <li>
+            @Html.ActionLink("DriverLicenses", "Index", "DriverLicenses", new { area = "Union" }, new { @class = "" })
+        </li>
+        <li>
+            @Html.ActionLink("Driver Next of Kins", "Index", "DriverNextOfKins", new { area = "Union" }, new { @class = "" })
+        </li>
+        <li>
+            @Html.ActionLink("Drivers", "Index", "Drivers", new { area = "Union" }, new { @class = "" })
+        </li>
+        <li>
+            @Html.ActionLink("Payments", "Index", "Payments", new { area = "Union" }, new { @class = "" })
+        </li>
+        <li>
+            @Html.ActionLink("News", "Index", "News", new { area = "Union" }, new { @class = "" })
+        </li>
+        @Html.Partial("_LoginPartial")
+    </ul>
+</div>
+<!-- /#sidebar-wrapper -->

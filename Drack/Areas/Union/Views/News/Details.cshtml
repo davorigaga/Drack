@@ -1,0 +1,49 @@
+﻿@model Drack.Models.News
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Headline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Headline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsImagePath)
+        </dt>
+
+        <dd>
+            @if (Model.NewsImagePath != null)
+            {
+                <img class="img-fluid" src="~/Resources/images/news/@Model.NewsImagePath" />
+            }
+            else
+            {
+                <img class="img-fluid" src="~/Resources/images/news/news.jpg" />
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NewsId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

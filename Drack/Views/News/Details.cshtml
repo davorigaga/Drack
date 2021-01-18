@@ -1,0 +1,32 @@
+﻿@model Drack.Models.News
+@using Drack.Extensions;
+@{
+    ViewBag.Title = "News Details";
+    ViewBag.Subtitle = Model.Headline;
+}
+
+<div class="container">
+    <div class="text-center mt-5">
+        <h3 class="display-4 text-dark">@ViewBag.Title</h3>
+        <h3 class="font-weight-light text-primary">@ViewBag.Subtitle</h3>
+    </div>
+
+    <div class="card mb-3">
+        @if (Model.NewsImagePath != null)
+        {
+            <img class="card-img-top" src="~/Resources/images/news/@Model.NewsImagePath" />
+        }
+        else
+        {
+            <img class="card-img-top" src="~/Resources/images/news/news.jpg" />
+        }
+        <div class="card-body">
+            <div class="card-text">
+                <div class="text">
+                    @Model.NewsDescription
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+

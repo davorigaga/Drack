@@ -1,0 +1,118 @@
+﻿@model Drack.Models.DriverNextOfKin
+
+@{
+    ViewBag.Title = "Next of Kin";
+    ViewBag.Subtitle = "Driver's Next of Kin Details";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4 mt-4 font-weight-normal text-primary">@ViewBag.Title</h1>
+        <p class="lead text-secondary p-2">@ViewBag.Subtitle</p>
+    </div>
+    <div class="container">
+        @if (Model != null)
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    @if (Model.ImagePath != null)
+                {
+                        <img class="img-card" src="~/Resources/images/drivers/@Model.ImagePath" />
+                    }
+                    else
+                    {
+                        <img class="img-card" src="~/Resources/images/drivers/user.png" />
+                    }
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.FullName)
+                            </strong>:
+                            @Html.DisplayFor(model => model.FullName)
+                        </div>
+
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Age)
+                            </strong>:
+                            @Html.DisplayFor(model => model.Age)
+                        </div>
+
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.MaritalStatus)
+                            </strong>:
+                            @Html.DisplayFor(model => model.MaritalStatus)
+                        </div>
+
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Gender)
+                            </strong>:
+                            @Html.DisplayFor(model => model.Gender)
+                        </div>
+
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </strong>:
+                            @Html.DisplayFor(model => model.Email)
+                        </div>
+
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.PhoneNumber)
+                            </strong>:
+                            @Html.DisplayFor(model => model.PhoneNumber)
+                        </div>
+
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.State)
+                            </strong>:
+                            @Html.DisplayFor(model => model.State)
+                        </div>
+
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.City)
+                            </strong>:
+                            @Html.DisplayFor(model => model.City)
+                        </div>
+
+                        <div class="col-md-6">
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Address)
+                            </strong>:
+                            @Html.DisplayFor(model => model.Address)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <strong>
+                        @Html.DisplayNameFor(model => model.Relationship)
+                    </strong>:
+                    @Html.DisplayFor(model => model.Relationship)
+
+                    <p class="p-4">
+                        <a class="btn btn-primary btn-lg" href="@Url.Action("UpdateNextOfKin")">Update Next of Kin</a>
+                        <a class="btn btn-danger btn-lg" href="@Url.Action("DeleteNextOfKin")">Delete</a>
+                        <a class="btn btn-info btn-lg" href="@Url.Action("About")">Driver Profile</a>
+                    </p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="p-4">
+                        <a class="btn btn-primary btn-lg" href="@Url.Action("AddNextOfKin")">Add Next of Kin</a>
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

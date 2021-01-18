@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Drack.Models.News>
+@using Drack.Extensions;
+@{
+    ViewBag.Title = "News";
+    ViewBag.Subtitle = "Update About the Union";
+}
+
+<div class="container-fluid m-0 p-0">
+    <div class="text-center news">
+        <div class="col-sm-12 overlay">
+            <h3 class="font-weight-light text-light m-2">@ViewBag.Title</h3>
+            <h5 class="text-primary">@ViewBag.Subtitle</h5>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 p-2">
+                <div class="card mb-3">
+                    <a href="@Url.Action("Details", new { id=item.NewsId })">
+                        <h3 class="card-title text-dark">@item.Headline</h3>
+                        @if (item.NewsImagePath != null)
+                        {
+                            <img class="card-img-top" src="~/Resources/images/news/@item.NewsImagePath" />
+                        }
+                        else
+                        {
+                            <img class="card-img-top" src="~/Resources/images/news/news.jpg" />
+                        }
+                    </a>
+                    <div class="card-body">
+                        <a class="text-black" href="@Url.Action("Details", new { id=item.NewsId })">
+                            <p class="card-text">
+                                @Html.Truncate(item.NewsDescription, 200) Read more
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

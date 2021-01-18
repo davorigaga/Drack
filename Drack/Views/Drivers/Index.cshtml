@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Drack.Models.Driver>
+
+@{
+    ViewBag.Title = "Drivers";
+    ViewBag.Subtitle = "The List of drivers and their respective garages";
+}
+
+<div class="container">
+    <div class="text-center mt-5">
+        <h3 class="display-3 text-dark">@ViewBag.Title</h3>
+        <p class="text-primary">@ViewBag.Subtitle</p>
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 p-2">
+                <div class="card shadow">
+                    @if (item.ImagePath != null)
+                {
+                        <img class="card-img-top driver-img" src="~/Resources/images/drivers/@item.ImagePath" />
+                    }
+                    else
+                    {
+                        <img class="card-img-top driver-img" src="~/Resources/images/drivers/user.png" />
+                    }
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-dark">
+                            @item.Verified
+                        </h5>
+                        <p class="card-text text-secondary">
+                            @item.FullName @Html.ActionLink("Details", "Details", new { id = item.DriverId })
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
